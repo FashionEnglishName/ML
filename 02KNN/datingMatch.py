@@ -2,20 +2,7 @@ import sys
 import matplotlib
 import matplotlib.pyplot as plt
 from numpy import *
-
-def kNN(X, Y, x, k):
-    m = len(X)
-    distMat = X - tile(x, (m,1))
-    distMat = distMat ** 2
-    scoreMat = distMat.sum(axis = 1)
-    sortedScoreMat = scoreMat.argsort()
-    classCount = zeros(4)
-    for i in range(k):
-        predict = Y[sortedScoreMat[i]]
-        classCount[predict] += 1
-    
-    classCount = classCount.argsort()
-    return classCount[-1]
+from kNN import kNN
 
 def file2Matrix(filename):
     # open file
